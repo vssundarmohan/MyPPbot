@@ -1,0 +1,19 @@
+apiVersion: app/v1
+kind: Deployment
+metadata:
+  name: task-bot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: task-bot
+  template:
+    metadata:
+      labels:
+        app: task-bot
+    spec:
+      containers:
+        - name: task-bot
+          image: sms300/task-bot:latest
+          ports:
+            - containerPort: 2000
