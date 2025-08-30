@@ -5,13 +5,13 @@ FROM python:3.10-slim
 WORKDIR /app
 
 # Copy requirements
-COPY app/requirements.txt
+COPY app/requirements.txt /app/requirements.txt
 
-#install dependencies
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy app
-COPY app/ .
+# Copy app code
+COPY app/ /app/
 
 # Run with Gunicorn
 CMD ["gunicorn", "-b", "0.0.0.0:2000", "main:app"]
